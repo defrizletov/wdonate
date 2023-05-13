@@ -35,8 +35,8 @@ wDonate.getBalance().then(console.log).catch(console.error);
 
 // Подключение callback.
 
-// Создаем сервер с нашим callback_secret.
-const wDonateCallback = new WDonateCallback(process.env.CALLBACK_SECRET);
+// Создаем сервер с токеном бота.
+const wDonateCallback = new WDonateCallback(process.env.TOKEN);
 
 // Устанавливаем обработчик, который выполнится, когда придёт пополнение.
 // Эта функция выведет объект события в консоль.
