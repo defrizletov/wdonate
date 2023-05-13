@@ -50,13 +50,13 @@ exports.WDonateCallback = class {
 
 exports.WDonate = class {
     constructor (options = {}) {
-        const { token, botId } = options;
+        const { token, id } = options;
 
-        if(!token || !botId) throw new Error(`WDonate: Вы не передали ${token ? 'VK ID бота (botId)' : 'ключ авторизации (token)'}.`);
+        if(!token || !id) throw new Error(`WDonate: Вы не передали ${token ? 'VK ID бота (id)' : 'ключ авторизации (token)'}.`);
 
         this.api = {
             token,
-            botId,
+            id,
             url: 'https://wdonate.ru/api/'
         };
     };
@@ -69,9 +69,9 @@ exports.WDonate = class {
     * @returns {Promise}
     */
     callApi (method, data = {}) {
-        const { url, token, botId } = this.api;
+        const { url, token, id } = this.api;
 
-        return post(url + method, { token, botId, ...data }).then(({ data: { response } }) => response);
+        return post(url + method, { token, botId: id, ...data }).then(({ data: { response } }) => response);
     };
 
     /**
